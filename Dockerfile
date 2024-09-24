@@ -21,8 +21,8 @@ RUN apt-get update \
 COPY requirements.txt /usr/src/app/
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Make port 8081 available to the outside world
-EXPOSE 8081
+# Make port 8080 available to the outside world
+EXPOSE 8080
 
 # Run the FastAPI app using Uvicorn
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8081"]
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8080"]
