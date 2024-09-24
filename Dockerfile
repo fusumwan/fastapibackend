@@ -17,12 +17,12 @@ RUN apt-get update \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
-# Install any needed packages specified in requirements.txt 
+# Install any needed packages specified in requirements.txt
 COPY requirements.txt /usr/src/app/
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Make port 8080 available to the outside world
+# Expose port 8080 for Google Cloud Run
 EXPOSE 8080
 
-# Run the FastAPI app using Uvicorn
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8080"]
+# Run the FastAPI app using gunicorn and uvicorn for better performance
+CMD ["gunicorn", "-k", "uvicorn.workers.UvicornWorker", "main:app", "--bind", "0.0.0.0:8080", "--workers", "4"]
