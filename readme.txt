@@ -9,7 +9,8 @@ pip install -r requirements.txt
 =============run project===============
 
 uvicorn main:app --reload
-uvicorn main:app --host 127.0.0.1 --port 8081 --reload
+uvicorn main:app --host 127.0.0.1 --port 8080 --reload
+
 
 Stop the server
 ctrl + c 

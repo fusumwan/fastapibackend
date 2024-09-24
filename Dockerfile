@@ -24,5 +24,5 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Expose port 8080 for Google Cloud Run
 EXPOSE 8080
 
-# Run the FastAPI app using gunicorn and uvicorn for better performance
-CMD ["gunicorn", "-k", "uvicorn.workers.UvicornWorker", "main:app", "--bind", "0.0.0.0:8080", "--workers", "4"]
+# Run the FastAPI app using uvicorn for better performance
+CMD ["uvicorn", "main:app", "--bind", "0.0.0.0:8080", "--workers", "4"]
